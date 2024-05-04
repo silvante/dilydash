@@ -3,5 +3,26 @@
 @tailwind utilities;
 
 .dashNav .active {
-  @apply bg-white text-black
+  @apply bg-white text-black;
+}
+
+body {
+  background: #f2f4f5;
+}
+.stick {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 20px !important;
+}
+
+.edited-scroll::-webkit-scrollbar {
+  width: 5px;
+  @apply bg-transparent;
+}
+.edited-scroll::-webkit-scrollbar-thumb {
+  @apply bg-gray-400;
+}
+
+bgbase{
+  background-color: #00c65e;
 }
