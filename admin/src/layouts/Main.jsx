@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <div className="flex">
       <Aside />
-      <section className="w-full flex-1 h-screen p-2">
+      <section className="w-full flex-1 h-screen p-2 overflow-y-scroll edited-scroll">
         <Outlet />
       </section>
     </div>

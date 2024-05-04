@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Aside = () => {
   return (
-    <div className=" w-64 h-screen bg-gray-950 p-2 text-white">
+    <div className="w-64 h-screen stick bg-gray-950 p-2 text-white">
       <a
         href="https://dily.uz/"
         target="_blanck"
