@@ -34,9 +34,7 @@ const Addproduct = () => {
         },
         body: JSON.stringify(formData),
       });
-      setisloading(true);
       const data = await response.json();
-      setisloading(false);
       console.log(data);
       const paramString = encodeURIComponent(JSON.stringify(response));
       navigate(`/?data=${paramString}`);

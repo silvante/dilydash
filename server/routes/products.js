@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
+const multer = require("multer");
+const path = require("path");
 // middlewares system
 const route = express.Router();
 route.use(express.json());
@@ -12,6 +13,9 @@ const productSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
+  },
+  image: {
+    type: String,
   },
   category: {
     type: String,
@@ -61,6 +65,22 @@ const productSchema = mongoose.Schema({
 
 const Product = mongoose.model("product", productSchema);
 
+// properties of multer
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({ storage });
+
 route.get("/", async (req, res) => {
   const products = await Product.find().sort({ name: 1 });
   res.send(products);
@@ -86,6 +106,7 @@ route.post("/", async (req, res) => {
 
     let product = new Product({
       name: req.body.name,
+      image: req.file.path,
       adress: req.body.adress,
       category: req.body.category,
       price: req.body.price,
