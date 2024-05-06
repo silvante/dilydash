@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Addproduct = () => {
+  const [isloading, setisloading] = useState(false);
   const [desc, setDesc] = useState("");
   const descPort = (e) => {
     setDesc(e.target.value);
@@ -23,7 +24,6 @@ const Addproduct = () => {
   const handleChange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
-  const [isloading, setisloading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -216,7 +216,7 @@ const Addproduct = () => {
             className={`py-2 px-5 rounded bg-greeny text-white ${
               isloading ? "opacity-50" : "opacity-100"
             }`}
-            onClick={navigate("/")}
+            // onClick={navigate("/")}
             type="submit"
           >
             {isloading ? "publishing..." : "Submit and public"}
